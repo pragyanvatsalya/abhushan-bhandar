@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abhusan Bhandar Management</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <header class="admin-header">
+      <div>
+        <p class="eyebrow">Management side</p>
+        <h1>Abhusan Bhandar Control Panel</h1>
+      </div>
+      <a class="customer-link" href="index.html">View Customer Website</a>
+    </header>
+
+    <main class="admin-layout">
+      <section class="panel notifications-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Customer activity</p>
+            <h2>Enquiry Notifications <span id="unreadCount" class="count-badge">0</span></h2>
+          </div>
+          <button id="clearRead" class="plain-button" type="button">Clear Read</button>
+        </div>
+        <div id="enquiryList" class="enquiry-list" aria-live="polite"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Shop content</p>
+            <h2>Website Details</h2>
+          </div>
+          <button id="resetSettings" class="plain-button" type="button">Reset</button>
+        </div>
+
+        <form id="settingsForm" class="settings-form">
+          <label>
+            Shop name
+            <input type="text" name="shopName" required />
+          </label>
+          <label>
+            Location
+            <input type="text" name="location" required />
+          </label>
+          <label>
+            Short tagline
+            <input type="text" name="tagline" required />
+          </label>
+          <label>
+            Hero description
+            <textarea name="heroText" rows="4" required></textarea>
+          </label>
+          <label>
+            About text
+            <textarea name="aboutText" rows="5" required></textarea>
+          </label>
+          <label>
+            Contact note
+            <textarea name="contactText" rows="4" required></textarea>
+          </label>
+          <label>
+            WhatsApp number
+            <input type="tel" name="whatsappNumber" placeholder="919876543210" />
+          </label>
+          <label>
+            Phone number
+            <input type="tel" name="phoneNumber" placeholder="9876543210" />
+          </label>
+          <label>
+            Instagram URL
+            <input type="url" name="instagramUrl" placeholder="https://instagram.com/..." />
+          </label>
+          <label>
+            Facebook URL
+            <input type="url" name="facebookUrl" placeholder="https://facebook.com/..." />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="shop@example.com" />
+          </label>
+          <label>
+            Store hours
+            <input type="text" name="storeHours" placeholder="10:00 AM - 8:00 PM" />
+          </label>
+          <label>
+            Google Maps URL
+            <input type="url" name="mapUrl" placeholder="https://maps.google.com/..." />
+          </label>
+          <label>
+            Pricing note
+            <textarea name="priceNote" rows="3" placeholder="Final price may vary with live metal rate and design confirmation."></textarea>
+          </label>
+          <button class="primary-button" type="submit">Save Website Details</button>
+          <p id="settingsStatus" class="status" role="status"></p>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Catalogue</p>
+            <h2>Products</h2>
+          </div>
+          <button id="resetProducts" class="plain-button" type="button">Reset Products</button>
+        </div>
+
+        <form id="productForm" class="product-form">
+          <input type="hidden" name="id" />
+          <label>
+            Product name
+            <input type="text" name="name" placeholder="Gold pendant set" required />
+          </label>
+          <label>
+            Product code / SKU
+            <input type="text" name="sku" placeholder="AB-RING-001" />
+          </label>
+          <label>
+            Category
+            <select name="category" required>
+              <option value="bridal">Bridal</option>
+              <option value="necklace">Necklace</option>
+              <option value="earring">Earring</option>
+              <option value="ring">Ring</option>
+              <option value="bangle">Bangle</option>
+              <option value="payal">Payal</option>
+              <option value="jhumka">Jhumka</option>
+              <option value="kardhani">Kardhani</option>
+              <option value="nose-ring">Nose Ring</option>
+            </select>
+          </label>
+          <label>
+            Stock status
+            <select name="stockStatus" required>
+              <option value="In Stock">In Stock</option>
+              <option value="Out of Stock">Out of Stock</option>
+              <option value="Made to Order">Made to Order</option>
+            </select>
+          </label>
+          <label>
+            Metal type
+            <select name="metalType" required>
+              <option value="gold">Gold</option>
+              <option value="silver">Silver</option>
+              <option value="platinum">Platinum</option>
+              <option value="diamond">Diamond</option>
+            </select>
+          </label>
+          <label>
+            Carat
+            <select name="carat" required>
+              <option value="18K">18K</option>
+              <option value="20K">20K</option>
+              <option value="22K">22K</option>
+              <option value="24K">24K</option>
+              <option value="Silver">Silver</option>
+              <option value="Imitation">Imitation</option>
+            </select>
+          </label>
+          <label>
+            Weight (gm)
+            <input type="number" name="weight" min="0" step="0.01" placeholder="12.5" required />
+          </label>
+          <label>
+            Base price
+            <input type="number" name="price" min="1" step="1" placeholder="12500" required />
+          </label>
+          <label>
+            Making charge (%)
+            <input type="number" name="makingCharge" min="0" step="0.01" placeholder="12" required />
+          </label>
+          <label>
+            GST (%)
+            <input type="number" name="gstPercent" min="0" step="0.01" placeholder="3" required />
+          </label>
+          <label>
+            Final price
+            <input type="number" name="finalPrice" min="1" step="1" placeholder="13700" readonly required />
+          </label>
+          <label>
+            Image URL
+            <input type="url" name="image" placeholder="https://example.com/product.jpg" required />
+          </label>
+          <label class="wide-field">
+            More image URLs
+            <textarea name="extraImages" rows="2" placeholder="Paste extra image URLs separated by comma"></textarea>
+          </label>
+          <label>
+            Ring/Bangle sizes
+            <input type="text" name="sizeOptions" placeholder="6, 7, 8 or 2.4, 2.6" />
+          </label>
+          <label>
+            Gemstone details
+            <input type="text" name="gemstone" placeholder="Ruby, pearl, diamond, none" />
+          </label>
+          <label>
+            Certification / hallmark
+            <input type="text" name="certification" placeholder="BIS Hallmarked / Certified" />
+          </label>
+          <label>
+            Occasion
+            <select name="occasion">
+              <option value="Everyday">Everyday</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Festival">Festival</option>
+              <option value="Engagement">Engagement</option>
+              <option value="Gift">Gift</option>
+            </select>
+          </label>
+          <label>
+            Audience
+            <select name="audience">
+              <option value="Women">Women</option>
+              <option value="Men">Men</option>
+              <option value="Kids">Kids</option>
+              <option value="Unisex">Unisex</option>
+            </select>
+          </label>
+          <label>
+            Delivery time
+            <input type="text" name="deliveryTime" placeholder="2-4 days / 10-15 days" />
+          </label>
+          <label>
+            Shipping info
+            <input type="text" name="shippingInfo" placeholder="Store pickup / local delivery" />
+          </label>
+          <label>
+            Rating
+            <input type="number" name="rating" min="1" max="5" step="0.1" placeholder="4.8" />
+          </label>
+          <label>
+            Review count
+            <input type="number" name="reviewCount" min="0" step="1" placeholder="24" />
+          </label>
+          <label class="wide-field">
+            Description
+            <textarea name="description" rows="3" placeholder="Short details about this item" required></textarea>
+          </label>
+          <label class="wide-field">
+            Return/exchange policy
+            <textarea name="returnPolicy" rows="2" placeholder="Exchange available after store confirmation"></textarea>
+          </label>
+          <label class="wide-field">
+            Care instructions
+            <textarea name="careInstructions" rows="2" placeholder="Keep away from perfume and moisture. Store separately."></textarea>
+          </label>
+          <label class="checkbox-field">
+            <input type="checkbox" name="featured" />
+            Show in featured products
+          </label>
+          <label class="checkbox-field">
+            <input type="checkbox" name="visible" checked />
+            Show on customer website
+          </label>
+          <div class="form-actions">
+            <button class="primary-button" type="submit">Save Product</button>
+            <button id="cancelEdit" class="plain-button" type="button" hidden>Cancel Edit</button>
+          </div>
+          <p id="productStatus" class="status" role="status"></p>
+        </form>
+
+        <div id="productList" class="product-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>
