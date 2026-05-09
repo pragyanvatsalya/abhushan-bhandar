@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abhusan Bhandar | Jewellery Shop in Mughalsarai</title>
+    <meta
+      name="description"
+      content="Explore jewellery, add items to cart, search collections, and place enquiries with Abhusan Bhandar in Mughalsarai Railway Settlement, Uttar Pradesh."
+    />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Abhusan Bhandar home">
+        <span class="brand-mark">AB</span>
+        <span>
+          <strong data-setting="shopName">Abhusan Bhandar</strong>
+          <small data-setting="locationShort">Mughalsarai Railway Settlement</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#featured">Featured</a>
+        <a href="#collections">Collections</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="cart-toggle" type="button" aria-label="Open cart">
+        Cart <span id="cartCount">0</span>
+      </button>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <p class="eyebrow" data-setting="tagline">Trusted local jewellery shop</p>
+          <h1 data-setting="shopName">Abhusan Bhandar</h1>
+          <p data-setting="heroText">
+            Explore graceful jewellery for weddings, festivals, gifts, and everyday wear from a
+            welcoming shop rooted in the Mughalsarai community.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#collections">Shop Collections</a>
+            <a class="secondary-action" href="#contact">Visit Store</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="featured" class="featured-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Premium picks</p>
+            <h2>Featured Jewellery</h2>
+          </div>
+        </div>
+        <div id="featuredGrid" class="product-grid compact-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="trust-strip" aria-label="Shop highlights">
+        <div>
+          <strong>Friendly Service</strong>
+          <span>Helpful guidance for every customer</span>
+        </div>
+        <div>
+          <strong>Local Store</strong>
+          <span data-setting="location">Mughalsarai Railway Settlement, UP</span>
+        </div>
+        <div>
+          <strong>Easy Enquiry</strong>
+          <span>Build a cart and request purchase details</span>
+        </div>
+      </section>
+
+      <section id="collections" class="shop-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Explore jewellery</p>
+            <h2>Collections</h2>
+          </div>
+          <label class="search-box">
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="Ring, necklace, bridal..." />
+          </label>
+        </div>
+
+        <div class="filters" aria-label="Product categories">
+          <button class="filter active" type="button" data-category="all">All</button>
+          <button class="filter" type="button" data-category="bridal">Bridal</button>
+          <button class="filter" type="button" data-category="necklace">Necklaces</button>
+          <button class="filter" type="button" data-category="earring">Earrings</button>
+          <button class="filter" type="button" data-category="ring">Rings</button>
+          <button class="filter" type="button" data-category="bangle">Bangles</button>
+          <button class="filter" type="button" data-category="payal">Payal</button>
+          <button class="filter" type="button" data-category="jhumka">Jhumka</button>
+          <button class="filter" type="button" data-category="kardhani">Kardhani</button>
+          <button class="filter" type="button" data-category="nose-ring">Nose Ring</button>
+        </div>
+
+        <div class="advanced-filters" aria-label="Advanced product filters">
+          <label>
+            Metal
+            <select id="metalFilter">
+              <option value="all">All metals</option>
+              <option value="gold">Gold</option>
+              <option value="silver">Silver</option>
+              <option value="platinum">Platinum</option>
+              <option value="diamond">Diamond</option>
+            </select>
+          </label>
+          <label>
+            Stock
+            <select id="stockFilter">
+              <option value="all">All stock</option>
+              <option value="In Stock">In Stock</option>
+              <option value="Out of Stock">Out of Stock</option>
+              <option value="Made to Order">Made to Order</option>
+            </select>
+          </label>
+          <label>
+            Sort
+            <select id="sortSelect">
+              <option value="featured">Featured first</option>
+              <option value="priceLow">Price: Low to High</option>
+              <option value="priceHigh">Price: High to Low</option>
+              <option value="rating">Top rated</option>
+            </select>
+          </label>
+          <label>
+            Occasion
+            <select id="occasionFilter">
+              <option value="all">All occasions</option>
+              <option value="Everyday">Everyday</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Festival">Festival</option>
+              <option value="Engagement">Engagement</option>
+              <option value="Gift">Gift</option>
+            </select>
+          </label>
+          <label>
+            For
+            <select id="audienceFilter">
+              <option value="all">Everyone</option>
+              <option value="Women">Women</option>
+              <option value="Men">Men</option>
+              <option value="Kids">Kids</option>
+              <option value="Unisex">Unisex</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="productGrid" class="product-grid" aria-live="polite"></div>
+        <p id="emptyState" class="empty-state" hidden>No matching jewellery found.</p>
+      </section>
+
+      <section id="about" class="about-section">
+        <div>
+          <p class="eyebrow">About the shop</p>
+          <h2>Jewellery with a warm local welcome</h2>
+        </div>
+        <p data-setting="aboutText">
+          Abhusan Bhandar is a jewellery shop located in the Mughalsarai Railway Settlement of
+          Uttar Pradesh. The establishment serves the local community with a friendly, welcoming
+          environment for customers seeking jewellery products for important occasions and daily
+          elegance.
+        </p>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <div>
+          <p class="eyebrow">Visit or enquire</p>
+          <h2>Plan your purchase</h2>
+          <p data-setting="contactText">
+            Add your favourite pieces to the cart and submit an enquiry. The shop team can confirm
+            availability, final pricing, and purchase details.
+          </p>
+        </div>
+
+        <form id="enquiryForm" class="contact-form">
+          <label>
+            Name
+            <input type="text" name="name" placeholder="Your name" required />
+          </label>
+          <label>
+            Phone
+            <input type="tel" name="phone" placeholder="Mobile number" required />
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="4" placeholder="I am interested in..."></textarea>
+          </label>
+          <button class="primary-action" type="submit">Send Enquiry</button>
+          <a id="whatsappContact" class="whatsapp-action" href="#" target="_blank" rel="noreferrer">WhatsApp Shop</a>
+          <p id="formStatus" class="form-status" role="status"></p>
+        </form>
+      </section>
+
+      <section class="info-section">
+        <article>
+          <p class="eyebrow">Trust</p>
+          <h2>Hallmark & Certification</h2>
+          <p>Check each product for hallmark or certification details. The shop team can confirm purity, stone work, and final purchase documentation.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Pricing</p>
+          <h2>Transparent Estimate</h2>
+          <p id="priceNote">Final price may vary with live metal rate, product weight, stone work, and design confirmation.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Care</p>
+          <h2>Jewellery Care</h2>
+          <p>Keep jewellery away from perfume, moisture, and harsh chemicals. Store pieces separately to protect finish and stones.</p>
+        </article>
+      </section>
+
+      <section class="info-section">
+        <article>
+          <p class="eyebrow">Delivery</p>
+          <h2>Shipping & Delivery</h2>
+          <p>Most ready items can be prepared quickly. Made-to-order jewellery may take longer depending on design, size, and gemstone work.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Policy</p>
+          <h2>Return & Exchange</h2>
+          <p>Return and exchange eligibility depends on product type, usage condition, customization, and store confirmation at purchase time.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Store</p>
+          <h2>Visit & Contact</h2>
+          <p>
+            <span id="storeHours">10:00 AM - 8:00 PM</span>
+            <br />
+            <a id="emailLink" href="#">Email</a>
+            <span> &middot; </span>
+            <a id="mapLink" href="#" target="_blank" rel="noreferrer">Map</a>
+            <span> &middot; </span>
+            <a id="instagramLink" href="#" target="_blank" rel="noreferrer">Instagram</a>
+            <span> &middot; </span>
+            <a id="facebookLink" href="#" target="_blank" rel="noreferrer">Facebook</a>
+            <span> &middot; </span>
+            <a id="callLink" href="#">Call</a>
+          </p>
+        </article>
+      </section>
+
+      <section class="faq-section">
+        <div>
+          <p class="eyebrow">Buying guide</p>
+          <h2>Common Questions</h2>
+        </div>
+        <div class="faq-grid">
+          <details open>
+            <summary>How is final price calculated?</summary>
+            <p>Final estimate includes base price, making charge percentage, and GST. Live rates and product confirmation may affect the final bill.</p>
+          </details>
+          <details>
+            <summary>Can I ask for a different size?</summary>
+            <p>Yes. Ring, bangle, payal, kardhani, and nose ring sizes can be discussed with the shop before purchase.</p>
+          </details>
+          <details>
+            <summary>Do products have hallmark or certificate?</summary>
+            <p>Certification details are shown on product pages when applicable. Please confirm documentation with the shop team before payment.</p>
+          </details>
+          <details>
+            <summary>Can I order on WhatsApp?</summary>
+            <p>Yes. Use the WhatsApp button on product cards or product details to start an inquiry or order conversation.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <aside class="cart-panel" aria-label="Shopping cart" aria-hidden="true">
+      <div class="cart-header">
+        <div>
+          <p class="eyebrow">Your selection</p>
+          <h2>Cart</h2>
+        </div>
+        <button class="icon-button" type="button" id="closeCart" aria-label="Close cart">x</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total estimate</span>
+          <strong id="cartTotal">Rs 0</strong>
+        </div>
+        <button id="checkoutButton" class="primary-action" type="button">Buy / Enquire</button>
+      </div>
+    </aside>
+    <div class="overlay" hidden></div>
+
+    <dialog id="productDialog" class="product-dialog">
+      <button class="icon-button modal-close" type="button" aria-label="Close product details">x</button>
+      <div id="productDetail"></div>
+    </dialog>
+
+    <footer class="footer">
+      <strong data-setting="shopName">Abhusan Bhandar</strong>
+      <span data-setting="location">Mughalsarai Railway Settlement, Uttar Pradesh</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
