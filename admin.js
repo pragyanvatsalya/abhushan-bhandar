@@ -139,6 +139,18 @@ const productList = document.querySelector("#productList");
 const cancelEdit = document.querySelector("#cancelEdit");
 const enquiryList = document.querySelector("#enquiryList");
 const unreadCount = document.querySelector("#unreadCount");
+const imageUpload = document.querySelector("#imageUpload");
+
+const goldRates = {
+  "18K": 5200,
+  "20K": 5800,
+  "22K": 6500,
+  "24K": 7200,
+  "Silver": 90,
+  "Imitation": 500
+};
+
+
 
 let products = loadProducts();
 let enquiries = readJson("abhusanEnquiries", []);
@@ -226,14 +238,23 @@ function calculateFinalPrice(price, makingPercent, gstPercent) {
 }
 
 function updateFinalPrice() {
+  const weight = Number(productForm.elements.weight.value || 0);
+  const carat = productForm.elements.carat.value;
+
+  if (weight > 0 && goldRates[carat]) {
+    const calculatedBasePrice = Math.round(weight * goldRates[carat]);
+    productForm.elements.price.value = calculatedBasePrice;
+  }
+
   const finalPrice = calculateFinalPrice(
     productForm.elements.price.value,
     productForm.elements.makingCharge.value,
     productForm.elements.gstPercent.value
   );
+
   productForm.elements.finalPrice.value = finalPrice || "";
 }
-
+  
 function saveProducts() {
   localStorage.setItem("abhusanProducts", JSON.stringify(products));
 }
@@ -493,13 +514,30 @@ enquiryList.addEventListener("click", (event) => {
 
 cancelEdit.addEventListener("click", resetProductForm);
 
-productForm.elements.price.addEventListener("input", updateFinalPrice);
+productForm.elements.weight.addEventListener("input", updateFinalPrice);
+productForm.elements.carat.addEventListener("change", updateFinalPrice);
 productForm.elements.makingCharge.addEventListener("input", updateFinalPrice);
 productForm.elements.gstPercent.addEventListener("input", updateFinalPrice);
-
 document.querySelector("#resetSettings").addEventListener("click", () => {
   saveSettings(defaultSettings);
-  fillSettingsForm();
+  imageUpload.addEventListener("change", () => {
+  const file = imageUpload.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (event) {
+    productForm.elements.image.value = event.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
+
+fillSettingsForm();
+renderProducts();
+renderEnquiries();
+  
   settingsStatus.textContent = "Website details reset.";
 });
 
