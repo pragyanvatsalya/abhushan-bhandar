@@ -288,6 +288,7 @@ function productFromForm() {
     metalType: formData.get("metalType"),
     carat: formData.get("carat"),
     weight: Number(formData.get("weight")),
+    stock: Number(formData.get("stock")),
     price: Number(formData.get("price")),
     makingCharge: Number(formData.get("makingCharge")),
     gstPercent: Number(formData.get("gstPercent")),
@@ -445,6 +446,15 @@ function renderProducts() {
     .map(
       (product) => `
         <article class="product-row">
+        
+          ${
+ 	     product.stock === 0
+            ? `<div class="out-of-stock-badge">Out Of Stock</div>`
+            : product.stock <= 5
+            ? `<div class="low-stock-badge">Only ${product.stock} pieces left! Hurry up!</div>`
+            : ""
+          }
+         
           <img src="${product.image}" alt="${product.name}">
           <div>
             <h3>${product.name}</h3>
